@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight } from 'react-native';
+import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, TextInput} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Text } from 'react-native-elements';
 import { Hideo } from 'react-native-textinput-effects';
@@ -17,6 +17,8 @@ export default class Relato extends Component {
             progress: new Animated.Value(0),
         }
     }
+
+    
     
     componentDidMount(){
 
@@ -25,6 +27,16 @@ export default class Relato extends Component {
     }
     render(){
 
+        const Button = (
+
+            <TouchableHighlight underlayColor = "transparent" onPress = {() => alert('finalizado')}>
+
+                <View style = {styles.relato_botao_submeter}>
+                    <Text style = {styles.botao_login_texto}>Submeter</Text>
+                </View>
+
+            </TouchableHighlight>
+        )
 
         return(
                
@@ -42,11 +54,11 @@ export default class Relato extends Component {
                 />
                 </View>
 
-                <View style = {{justifyContent: 'center', alignItems: 'center'}}>
-                    <Text style = {{fontSize: 16, fontWeight: 'bold'}}>Clique na câmera para anexar uma imagem </Text>
+                <View style = {styles.relato_view_text}>
+                    <Text style = {styles.relato_text}>Clique na câmera para anexar uma imagem </Text>
                 </View>
                
-               <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 30}}>
+               <View style = {styles.relato_view_animation}>
                     <TouchableHighlight underlayColor = "transparent" onPress = {() => alert('camera')}>
                          <LottieView
                             ref={animation => {
@@ -59,6 +71,21 @@ export default class Relato extends Component {
 
                 </View>
 
+                <View style = {styles.relato_view_text}>
+                    <Text style = {styles.relato_text}>Descreva a infração</Text>
+                </View>
+                
+                <View style = {styles.relato_input}>
+                    <TextInput
+
+                        placeholder = "Infração"
+                        multiline
+                        underlineColorAndroid = "black"
+                    />
+                </View>
+                <View style = {styles.view_button}>
+                    {Button}
+                </View>
             </ScrollView>
 
 

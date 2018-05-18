@@ -71,7 +71,7 @@ export default class Login extends Component {
                     iconColor={'white'}
                     iconBackgroundColor={'#3100FF'}
                     inputStyle={{ color: '#464949' }}
-                    placeholder= "Usuário"
+                    placeholder= "E-mail"
                     
                 />
                 

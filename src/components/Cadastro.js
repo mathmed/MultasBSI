@@ -1,38 +1,56 @@
 import React, {Component} from 'react';
-import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight } from 'react-native';
+import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Text } from 'react-native-elements';
 import { Hideo } from 'react-native-textinput-effects';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import LottieView from 'lottie-react-native';
 import styles from '../styles/styles.js';
+import { connect } from 'react-redux';
+import { modifica_acesso, cadastrar } from '../actions/acesso_actions.js';
 
 
 
-export default class Cadastro extends Component {
+
+class Cadastro extends Component {
 
 	constructor(props){
 		super(props);
         this.state = {
-            
         }
     }
     
-    /* antes do componente iniciar serão feitos todos os calculos e posteriormente as informações serão guardadas no state */
+
+    _renderizarBotao(){
+    
+        if(!this.props.loading_cadastro){
+            return(
+                <TouchableHighlight underlayColor = "transparent" onPress = {() => this.lancar()}>
+
+                    <View style = {styles.botao_login}>
+                        <Text style = {styles.botao_login_texto}> Cadastrar-se </Text>
+                    </View>
+
+                </TouchableHighlight>
+            )
+        }
+
+
+            return (<ActivityIndicator size = 'large' color = '#4519FF' />);
+        
+    }
+
+
+    lancar(){
+        const email = this.props.email_cadastro;
+        const nome = this.props.nome_cadastro;
+        const senha = this.props.senha_cadastro;
+
+        this.props.cadastrar(email, nome, senha);
+    }
 
     
     render(){
 
-        const Button = (
-
-            <TouchableHighlight underlayColor = "transparent" onPress = {() => alert('clicado')}>
-
-                <View style = {styles.botao_login}>
-                    <Text style = {styles.botao_login_texto}> Cadastrar-se </Text>
-                </View>
-
-            </TouchableHighlight>
-        )
 
         return(
 
@@ -54,6 +72,7 @@ export default class Cadastro extends Component {
                     iconBackgroundColor={'#3100FF'}
                     inputStyle={{ color: '#464949' }}
                     placeholder= "Nome"
+                    onChangeText = {text => this.props.modifica_acesso(text, 'nome_cadastro')}
                     
                 />
                 <Hideo
@@ -63,7 +82,8 @@ export default class Cadastro extends Component {
                     iconBackgroundColor={'#3100FF'}
                     inputStyle={{ color: '#464949' }}
                     style = {{marginTop: 10}}
-                    placeholder= "Login de acesso"
+                    placeholder= "E-Mail"
+                    onChangeText = {text => this.props.modifica_acesso(text, 'email_cadastro')}
                     
                 />
                 
@@ -75,6 +95,7 @@ export default class Cadastro extends Component {
                     inputStyle={{ color: '#464949' }}
                     style = {{marginTop: 10}}
                     placeholder= "Senha"
+                    onChangeText = {text => this.props.modifica_acesso(text, 'senha_cadastro')}
                     secureTextEntry
                     
                 />
@@ -83,17 +104,25 @@ export default class Cadastro extends Component {
 
             <View style = {styles.view_button}>
                 
-                {Button}
+                {this._renderizarBotao()}
 
             </View>
-
-
 
 
             </ScrollView>
         )
 
     }
-
 	
 }
+
+const mapStateToProps = state => (
+    {
+        email_cadastro: state.acesso_reducers.email_cadastro,
+        senha_cadastro: state.acesso_reducers.senha_cadastro,
+        nome_cadastro: state.acesso_reducers.nome_cadastro,
+        loading_cadastro: state.acesso_reducers.loading_cadastro
+    }
+);
+
+export default connect (mapStateToProps, {modifica_acesso, cadastrar })(Cadastro);

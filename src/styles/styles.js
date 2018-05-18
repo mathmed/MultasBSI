@@ -131,7 +131,40 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
+    relato_view_text: {
+        justifyContent: 'center', alignItems: 'center', marginTop: 20
+    },
 
+    relato_text: {
+        fontSize: 16, fontWeight: 'bold'
+    },
+
+    relato_view_animation: {
+        justifyContent: 'center', alignItems: 'center', marginTop: 30
+    },
+
+    relato_input: {
+        padding: 16
+    },
+
+
+    relato_botao_submeter: {
+        backgroundColor: "#E82D0C",
+        width: 150,
+        height:40,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+
+
+    loading_animation: {
+        width: 80,
+        height: 80,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
 
 
 })

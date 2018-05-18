@@ -1,7 +1,7 @@
 
 import { combineReducers } from 'redux';
-import login from './login.js';
+import acesso_reducers from './acesso_reducers.js';
 
 export default combineReducers({
-    login
+    acesso_reducers
 });
