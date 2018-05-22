@@ -166,6 +166,21 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
+    imagem: {
+        width: 280,
+        height: 280,
+        marginBottom: 30,
+        borderRadius: 10
+    },
+
+    view_remover: {
+        flexDirection: 'row', marginBottom: 10
+    },
+
+    text_remover: {
+        fontSize: 16, color: 'red'
+    }
+
 
 })
 

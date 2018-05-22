@@ -45,7 +45,7 @@ class Cadastro extends Component {
         const nome = this.props.nome_cadastro;
         const senha = this.props.senha_cadastro;
 
-        this.props.cadastrar(email, nome, senha);
+        this.props.cadastrar({email, nome, senha});
     }
 
     

@@ -8,9 +8,10 @@ import LottieView from 'lottie-react-native';
 import styles from '../styles/styles.js';
 import Drawer from 'react-native-drawer';
 import DrawerTela from './Drawer.js'
+import { connect } from 'react-redux';
 
 
-export default class Home extends Component {
+class Home extends Component {
 
 	constructor(props){
 		super(props);
@@ -46,7 +47,7 @@ export default class Home extends Component {
                     <Icon name = {"bars"} size = {30} color = "#2200B2" />
                 </TouchableHighlight>
                 
-                <Text h4> Olá, Fulano da Silva </Text>
+                <Text h4> Olá, {this.props.nome} </Text>
 
             </View>
 
@@ -73,8 +74,6 @@ export default class Home extends Component {
             
             </View>
 
-            
-
              <View style = {styles.footer}>
                 <View style = {styles.view_button}>
                     <TouchableHighlight underlayColor = "transparent" onPress = {() => Actions.relato()}>
@@ -91,8 +90,6 @@ export default class Home extends Component {
                     </View>
             </View>
 
-               
-
             </View>
 
             </Drawer>
@@ -102,3 +99,15 @@ export default class Home extends Component {
 
 	
 }
+
+const mapStateToProps = state => (
+    {
+        email: state.usuario_reducers.email,
+        senha: state.usuario_reducers.senha,
+        foto: state.usuario_reducers.foto,
+        nome: state.usuario_reducers.nome,
+
+    }
+);
+
+export default connect (mapStateToProps, {})(Home);

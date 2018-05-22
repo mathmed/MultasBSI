@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
-import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight } from 'react-native';
+import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Text } from 'react-native-elements';
 import { Hideo } from 'react-native-textinput-effects';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LottieView from 'lottie-react-native';
 import styles from '../styles/styles.js';
+import { connect } from 'react-redux';
+import { modifica_acesso, login } from '../actions/acesso_actions.js';
 
 
 
-export default class Login extends Component {
+
+class Login extends Component {
 
 	constructor(props){
 		super(props);
@@ -24,21 +27,27 @@ export default class Login extends Component {
 
         this.animation.play();
           
-          
+    }
+
+    _renderizarBotao(){
+        if(!this.props.loading_login){
+            return(
+                <TouchableHighlight underlayColor = "transparent" onPress = {() => this.props.login(this.props.email_login, this.props.senha_login)}>
+
+                    <View style = {styles.botao_login}>
+                        <Text style = {styles.botao_login_texto}> Login </Text>
+                    </View>
+
+                </TouchableHighlight>
+
+            )
+
+        }
+
+        return <ActivityIndicator size = 'large' color = '#4519FF' />
     }
     
     render(){
-
-        const Button = (
-
-            <TouchableHighlight underlayColor = "transparent" onPress = {() => Actions.home()}>
-
-                <View style = {styles.botao_login}>
-                    <Text style = {styles.botao_login_texto}> Login </Text>
-                </View>
-
-            </TouchableHighlight>
-        )
 
         return(
 
@@ -72,6 +81,8 @@ export default class Login extends Component {
                     iconBackgroundColor={'#3100FF'}
                     inputStyle={{ color: '#464949' }}
                     placeholder= "E-mail"
+                    value = {this.props.email_login}
+                    onChangeText = {(texto) => this.props.modifica_acesso(texto, 'email_login')}
                     
                 />
                 
@@ -84,6 +95,9 @@ export default class Login extends Component {
                     style = {{marginTop: 10}}
                     placeholder= "Senha"
                     secureTextEntry
+                    value = {this.props.senha_login}
+                    onChangeText = {(texto) => this.props.modifica_acesso(texto, 'senha_login')}
+
                     
                 />
             </View>
@@ -91,7 +105,7 @@ export default class Login extends Component {
 
             <View style = {styles.view_button}>
                 
-                {Button}
+                {this._renderizarBotao()}
 
             </View>
 
@@ -116,3 +130,13 @@ export default class Login extends Component {
 
 	
 }
+
+const mapStateToProps = state => (
+    {
+        email_login: state.acesso_reducers.email_login,
+        senha_login: state.acesso_reducers.senha_login,
+        loading_login: state.acesso_reducers.loading_login
+    }
+);
+
+export default connect (mapStateToProps, {modifica_acesso, login })(Login);
