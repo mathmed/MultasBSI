@@ -3,6 +3,7 @@ import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, Text
 import { Actions } from 'react-native-router-flux';
 import { Text } from 'react-native-elements';
 import { Hideo } from 'react-native-textinput-effects';
+import { TextInputMask } from 'react-native-masked-text'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../styles/styles.js';
 import LottieView from 'lottie-react-native';
@@ -36,7 +37,7 @@ class Relato extends Component {
 	_publicar() {
 
 
-		if(this.state.imagePath && this.props.placa && this.props.descricao) {
+		if(this.state.imagePath && this._valida_placa() && this.props.descricao) {
 
             LocationServicesDialogBox.checkLocationServicesIsEnabled({
 
@@ -57,6 +58,39 @@ class Relato extends Component {
             Alert.alert("Erro", "Preencha as informações corretamente");
         }
         
+    }
+
+    _valida_placa(){
+
+        if(this.props.placa.length == 8){
+
+            var placa = this.props.placa.split("-");
+            var placa_letras = placa[0];
+            var placa_num = placa[1];
+
+            if(placa_letras.length == 3 && placa_num.length == 4){
+                
+                if(isNaN(placa_letras[0]) && isNaN(placa_letras[1]) && isNaN(placa_letras[2])){
+
+                    if(!isNaN(placa_num[0]) && !isNaN(placa_num[1]) && !isNaN(placa_num[2]) && !isNaN(placa_num[3])){
+                        
+                        return true;
+
+                    }else{
+                        return false;
+                    }
+                }else{  
+                    return false;
+                }
+
+
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+
     }
 
     
@@ -99,7 +133,13 @@ class Relato extends Component {
 
         <ScrollView style={styles.container_relato} contentContainerStyle={styles.content}>
             <View style = {styles.login_input}>
-                <Hideo
+                <TextInputMask
+                    type={'custom'}
+                    options= {{
+                        mask: 'AAA-9999'
+                        
+                    }}   
+                    customTextInput={Hideo}
                     iconClass={Icon}
                     iconName={'car'}
                     iconColor={'white'}

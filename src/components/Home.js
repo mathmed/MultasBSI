@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
-import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight } from 'react-native';
+import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, FlatList } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Text } from 'react-native-elements';
 import { Hideo } from 'react-native-textinput-effects';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import _ from 'lodash';
 import LottieView from 'lottie-react-native';
 import styles from '../styles/styles.js';
 import Drawer from 'react-native-drawer';
 import DrawerTela from './Drawer.js'
 import { connect } from 'react-redux';
+import { listarHome } from '../actions/listarHome_actions.js';
+import UserAvatar from 'react-native-user-avatar';
 
 
 class Home extends Component {
@@ -24,18 +27,43 @@ class Home extends Component {
     componentDidMount(){
 
         this.animation.play();
-          
+        this.props.listarHome();
     }
+
+    renderRow = (ultimas) => {
+			return(
+				<View style={{ flex: 1, borderBottomWidth: 1, borderColor: '#CCC', padding: 10 }}>
+                    <View style = {{flexDirection: 'row', justifyContent: 'space-around'}}>
+                        <UserAvatar size="45" name="MM" src = {ultimas.fotoPerfil} />
+                        <View style = {{justifyContent: 'center', alignItems: 'center' }}>
+                            <Text> {ultimas.descricao}</Text>
+                        </View>
+
+                        <View style = {{justifyContent: 'center', alignItems: 'center'}}>
+                        
+                            <TouchableHighlight onPress = {() => Actions.detalhes({
+                                data: ultimas.dataPublicacao, descricao: ultimas.descricao, endereco: ultimas.endereco,
+                                imagem: ultimas.imagem, nome: ultimas.nome, placa: ultimas.placa
+                            })} underlayColor = 'transparent'>
+                            
+                                <Icon name = {"eye"} size = {30} color = "#E82D0C" />
+                            </TouchableHighlight>
+                        </View>
+                    </View>
+				</View>
+			);
+
+		}
+	
     render(){
 
 
         return(
             <Drawer ref = {(ref) => this._drawer = ref}
-			open = {this.state.drawer}
-       		content={<DrawerTela />}
-       		openDrawerOffset={0.2}
-       		onClose = {() => this.setState({drawer: !this.state.drawer})}>
-
+                open = {this.state.drawer}
+                content={<DrawerTela />}
+                openDrawerOffset={0.2}
+                onClose = {() => this.setState({drawer: !this.state.drawer})}>
                
             <View style={styles.container_home}>
 
@@ -47,7 +75,7 @@ class Home extends Component {
                     <Icon name = {"bars"} size = {30} color = "#2200B2" />
                 </TouchableHighlight>
                 
-                <Text h4> Olá, {this.props.nome} </Text>
+                <Text h4> Multas BSI </Text>
 
             </View>
 
@@ -55,22 +83,12 @@ class Home extends Component {
 
             <View style = {styles.feed}>
 
-                <ScrollView>
+				<FlatList
+					extraData = {this.props.ultimas}
+					data = {this.props.ultimas}
+					renderItem = {({item}) => this.renderRow(item)}
 
-                    <Text h1> teste </Text>
-                    <Text h1> teste </Text>
-                    <Text h1> teste </Text>
-                    <Text h1> teste </Text>
-                    <Text h1> teste </Text>
-                    <Text h1> teste </Text>
-                    <Text h1> teste </Text>
-                    <Text h1> teste </Text>
-                    <Text h1> teste </Text>
-                    <Text h1> teste </Text>
-                    
-                    
-
-                </ScrollView>
+				/>
             
             </View>
 
@@ -100,14 +118,13 @@ class Home extends Component {
 	
 }
 
-const mapStateToProps = state => (
-    {
-        email: state.usuario_reducers.email,
-        senha: state.usuario_reducers.senha,
-        foto: state.usuario_reducers.foto,
-        nome: state.usuario_reducers.nome,
+const mapStateToProps = state => {
+	const ultimas = _.map(state.home_reducers, (val, uid) => {
+		return { ...val, uid };
+	});
 
-    }
-);
+	return { ultimas };
+};
 
-export default connect (mapStateToProps, {})(Home);
+
+export default connect (mapStateToProps, {listarHome})(Home);
