@@ -33,7 +33,7 @@ class Home extends Component {
     renderRow = (ultimas) => {
 			return(
 				<View style={{ flex: 1, borderBottomWidth: 1, borderColor: '#CCC', padding: 10 }}>
-                    <View style = {{flexDirection: 'row', justifyContent: 'space-around'}}>
+                    <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
                         <UserAvatar size="45" name="MM" src = {ultimas.fotoPerfil} />
                         <View style = {{justifyContent: 'center', alignItems: 'center' }}>
                             <Text> {ultimas.descricao}</Text>
@@ -43,7 +43,7 @@ class Home extends Component {
                         
                             <TouchableHighlight onPress = {() => Actions.detalhes({
                                 data: ultimas.dataPublicacao, descricao: ultimas.descricao, endereco: ultimas.endereco,
-                                imagem: ultimas.imagem, nome: ultimas.nome, placa: ultimas.placa
+                                imagem: ultimas.imagem, nome: ultimas.nome, placa: ultimas.placa, status: ultimas.status
                             })} underlayColor = 'transparent'>
                             
                                 <Icon name = {"eye"} size = {30} color = "#E82D0C" />

@@ -79,6 +79,7 @@ export const publicar = (img, placa, descricao) => {
             const d2 = ' às ';
             const d3 = moment().local().format('h:mm a');
             const dataPublicacao = d1 + d2 + d3;
+            const status = false;
 
             firebase.database().ref('usuarios/' + emailB64).once('value', snapshot => {
                  const info = snapshot.val();
@@ -87,7 +88,7 @@ export const publicar = (img, placa, descricao) => {
                  const idade = info.idade;
                  const cidade = info.cidade;
                  const sexo = info.sexo;
-                 firebase.database().ref('relatos/').push({ imagem, placa, emailB64, data, fotoPerfil, nome, descricao, dataPublicacao, endereco })
+                 firebase.database().ref('relatos/').push({ imagem, placa, emailB64, data, fotoPerfil, nome, descricao, dataPublicacao, endereco, status })
                      .then(() => {
                          Alert.alert('Êxito', 'Relato enviado');
                          dispatch({ type: 'publicado' });

@@ -12,21 +12,16 @@ export default class DrawerTela extends Component {
 	constructor(props){
         super(props);
         const lista = [
-			{key: 0, title: 'Meus relatos', img: 'search', onPress:() => alert('relatos') },
-			{key: 1, title: 'Editar perfil', img: 'settings',onPress: () => alert('editar') },
-			{key: 2, title: 'Deslogar', img: 'power-settings-new', onPress: () => alert('deslogar') },
-            {key: 3, title: 'Voltar', img: 'arrow-back', onPress: () => alert('volto')},
-            {key: 4, title: 'Sobre', img: 'info', onPress: () => alert('sobre')}
+			{key: 0, title: 'Meus relatos', img: 'search', onPress:() => Actions.meusrelatos()},
+			{key: 1, title: 'Editar perfil', img: 'settings', onPress: () => Actions.editarperfil() },
+			{key: 2, title: 'Deslogar', img: 'power-settings-new', onPress: () => alert('x') },
+            {key: 3, title: 'Sobre', img: 'info', onPress: () => alert('x')}
         ]
 
         this.state = {
             lista: lista
         }
 	}
-	componentWillMount(){
-
-    }
-    
 
     renderRow = (item) => {
 		return(

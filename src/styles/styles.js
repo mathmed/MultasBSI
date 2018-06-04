@@ -179,8 +179,27 @@ const styles = StyleSheet.create({
 
     text_remover: {
         fontSize: 16, color: 'red'
-    }
+    },
 
+    detalhes_view_text: {
+        flexDirection: 'row', marginHorizontal: '5%', marginBottom: 10, alignItems: 'center'
+    },
+
+    detalhes_texto_titulo: {
+        fontSize: 16, fontWeight: 'bold', color: 'black', textAlign: 'center', marginBottom: 10
+    },
+
+    detalhes_texto_comum: {
+        fontSize: 14, marginLeft: 5
+    },
+
+    detalhes_view_geral: {
+        marginBottom: 20, marginTop: 15
+    },
+
+    meusrelatos_texto_erro: {
+        alignItems: 'center', justifyContent: 'center', fontSize: 18, marginTop: 80
+    }
 
 })
 

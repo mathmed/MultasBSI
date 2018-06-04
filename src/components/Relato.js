@@ -8,7 +8,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../styles/styles.js';
 import LottieView from 'lottie-react-native';
 import { connect } from 'react-redux';
-import firebase from 'firebase';
 import LocationServicesDialogBox from "react-native-android-location-services-dialog-box";
 import { modifica_enviar, publicar } from '../actions/lancamento_actions';
 
