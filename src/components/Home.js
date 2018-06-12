@@ -48,17 +48,12 @@ class Home extends Component {
                     tipo: ultimas.tipo, classe: ultimas.classe
                 })} underlayColor = 'transparent'>
 
-				<View style={{ flex: 1, borderBottomWidth: 1, borderColor: '#CCC', padding: 10 }}>
-                    <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
+				<View style={{ flex: 1, borderBottomWidth: 1, borderColor: '#CCC', padding: 30, flexDirection: 'row', justifyContent: 'space-around' }}>
                         <UserAvatar size="45" name="MM" src = {ultimas.imagem} />
-                        <View style = {{justifyContent: 'center', alignItems: 'center' }}>
+                        <View style = {{ alignItems: 'center' , marginLeft: 40 }}>
                             <Text> {ultimas.descricao}</Text>
                         </View>
 
-                        <View style = {{justifyContent: 'center', alignItems: 'center'}}>
-                                <Icon name = {"eye"} size = {30} color = "#E82D0C" />
-                        </View>
-                    </View>
 				</View>
                 </TouchableHighlight>
 			);
@@ -85,7 +80,7 @@ class Home extends Component {
                     <Icon name = {"bars"} size = {30} color = "#2200B2" />
                 </TouchableHighlight>
                 
-                <Text h4> Multas BSI </Text>
+                <Text h4> Últimos relatos </Text>
 
             </View>
 

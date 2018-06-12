@@ -1,4 +1,6 @@
 
+
+import {Actions} from 'react-native-router-flux';
 const INITIAL_STATE = {
 
 	placa: '',
@@ -21,7 +23,7 @@ export default(state = INITIAL_STATE, action) => {
 		case 'publicar_andamento':
 			return{...state}
 
-		case 'publicado': 
+		case 'publicado':
 			return{...state, placa: '', descricao: '', loading_enviar: false}
 
 		case 'andamento':

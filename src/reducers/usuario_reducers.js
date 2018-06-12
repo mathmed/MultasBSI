@@ -3,7 +3,8 @@ const INITIAL_STATE = {
 
     email: '',
     senha: '',
-    nome: ''
+	nome: '',
+	loading_enviar: false
 
 
 };
@@ -19,7 +20,12 @@ export default(state = INITIAL_STATE, action) => {
 
 		case 'modifica_senha_perfil':
 			return{...state, senha: action.payload}
+
+		case 'alterar_dados_fim': 
+			return{...state, loading_enviar: false}
 			
+		case 'alterar_dados_andamento':
+			return{...state, loading_enviar: true}
 		default:
 			return state;
 	}

@@ -36,12 +36,14 @@ export const listarHome = () => {
 					alert("entrei no on")
 					Actions.refresh();
 					snapshot.forEach((snap) => {
-					const duck = snap.val();
-					feed.push(duck);
+	
+						const duck = snap.val();
+						feed.push(duck);
+						
 					});
-					
+					dispatch({ type: 'home', payload: feed });
+						
 				});
-				dispatch({ type: 'home', payload: feed });
 		}
 	}
 }

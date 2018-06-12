@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     },
 
     detalhes_texto_titulo: {
-        fontSize: 16, fontWeight: 'bold', color: 'black', textAlign: 'center', marginBottom: 10
+        fontSize: 16, fontWeight: 'bold', color: 'black', textAlign: 'center', margin: 10
     },
 
     detalhes_texto_comum: {

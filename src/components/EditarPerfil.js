@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableHighlight, ActivityIndicator, Platform, TextInput, CheckBox } from 'react-native';
+import { View, Text, TouchableHighlight, ActivityIndicator, Platform, TextInput, CheckBox, StatusBar } from 'react-native';
 import UserAvatar from 'react-native-user-avatar';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
@@ -17,15 +17,29 @@ class EditarPerfil extends Component {
             exibir: true
         }
     }
+    
+    _renderizarBotao(){
+        if(!this.props.loading_salvar){
+            return(
 
-    componentDidMount(){
-       
+            <TouchableHighlight underlayColor = "transparent" onPress = {() => this.props.salvarDados(this.props.senha, this.props.nome)}>
+                <View style = {styles.relato_botao_submeter}>
+                    <Text style = {styles.botao_login_texto}>Salvar</Text>
+                </View>
+            </TouchableHighlight>
+
+            )
+        }
+
+        return <ActivityIndicator size = 'large' color = '#E82D0C' />
     }
-
 
     render(){
         return(
+
+			
 			<View style = {{ flex: 1, backgroundColor: 'snow' }}>
+                <StatusBar backgroundColor = "#E82D0C"/>
                 <View style = {styles.relato_input}>
                     <TextInput
                         placeholder = "Nome"
@@ -52,6 +66,10 @@ class EditarPerfil extends Component {
                     />
                     <Text>Exibir senha</Text>
                 </View>
+
+                <View style = {styles.view_button}>
+                    {this._renderizarBotao()}
+                </View>
                
         
             </View>
@@ -63,6 +81,7 @@ const mapStateToProps = state => (
     {
         nome: state.usuario_reducers.nome,
         senha: state.usuario_reducers.senha,
+        loading_enviar: state.usuario_reducers.loading_enviar
 
     }
 );

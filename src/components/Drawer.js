@@ -14,7 +14,7 @@ export default class DrawerTela extends Component {
         const lista = [
 			{key: 0, title: 'Meus relatos', img: 'search', onPress:() => Actions.meusrelatos()},
 			{key: 1, title: 'Editar perfil', img: 'settings', onPress: () => Actions.editarperfil() },
-			{key: 2, title: 'Deslogar', img: 'power-settings-new', onPress: () => alert('x') },
+			{key: 2, title: 'Deslogar', img: 'power-settings-new', onPress: () => Actions.login() },
             {key: 3, title: 'Sobre', img: 'info', onPress: () => alert('x')}
         ]
 

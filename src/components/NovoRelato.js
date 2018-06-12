@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, TextInput, Image, Platform, Alert, ActivityIndicator} from 'react-native';
+import { Picker, View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, TextInput, Image, Platform, Alert, ActivityIndicator} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Text } from 'react-native-elements';
 import { Hideo } from 'react-native-textinput-effects';
@@ -14,7 +14,7 @@ import { modifica_enviar, publicar } from '../actions/lancamento_actions';
 const ImagePicker = require('react-native-image-picker');
 
 
-class Relato extends Component {
+class NovoRelato extends Component {
 
 	constructor(props){
 		super(props);

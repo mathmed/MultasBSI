@@ -27,25 +27,18 @@ class MeusRelatos extends Component {
 
     renderRow = (ultimas) => {
 			return(
-				<View style={{ flex: 1, borderBottomWidth: 1, borderColor: '#CCC', padding: 10 }}>
-                    <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <TouchableHighlight onPress = {() => Actions.detalhes({
+                    data: ultimas.dataPublicacao, descricao: ultimas.descricao, endereco: ultimas.endereco,
+                    imagem: ultimas.imagem, nome: ultimas.nome, placa: ultimas.placa, status: ultimas.status
+                })} underlayColor = 'transparent'>
+
+				<View style={{ flex: 1, borderBottomWidth: 1, borderColor: '#CCC', padding: 30, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <UserAvatar size="45" name="MM" src = {ultimas.imagem} />
-                        <View style = {{justifyContent: 'center', alignItems: 'center' }}>
+                        <View style = {{alignItems: 'center' , marginLeft: 40 }}>
                             <Text> {ultimas.descricao}</Text>
                         </View>
-
-                        <View style = {{justifyContent: 'center', alignItems: 'center'}}>
-                        
-                            <TouchableHighlight onPress = {() => Actions.detalhes({
-                                data: ultimas.dataPublicacao, descricao: ultimas.descricao, endereco: ultimas.endereco,
-                                imagem: ultimas.imagem, nome: ultimas.nome, placa: ultimas.placa, status: ultimas.status
-                            })} underlayColor = 'transparent'>
-                            
-                                <Icon name = {"eye"} size = {30} color = "#E82D0C" />
-                            </TouchableHighlight>
-                        </View>
-                    </View>
 				</View>
+                </TouchableHighlight>
 			);
 
 		}
