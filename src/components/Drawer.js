@@ -45,11 +45,6 @@ export default class DrawerTela extends Component {
 	render() {
 		return(
 			<View style = {styles.drawer_container}>
-				<View style = {styles.drawer_avatar}>
-					{this.state.image ? <UserAvatar size="100" name="AvishayBar" src = {this.state.image} /> : 
-					<UserAvatar size="100" name="MM" component = {{ avatar }} /> }
-					<Text style = {{ fontSize: 15, color: 'grey', fontWeight: 'bold', marginTop: 15 }}> {this.state.nome} </Text>
-				</View>
 				<View style = { styles.drawer_flat }>
 					<FlatList
 						extraData = {this.state.lista}

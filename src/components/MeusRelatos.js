@@ -29,7 +29,7 @@ class MeusRelatos extends Component {
 			return(
 				<View style={{ flex: 1, borderBottomWidth: 1, borderColor: '#CCC', padding: 10 }}>
                     <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <UserAvatar size="45" name="MM" src = {ultimas.fotoPerfil} />
+                        <UserAvatar size="45" name="MM" src = {ultimas.imagem} />
                         <View style = {{justifyContent: 'center', alignItems: 'center' }}>
                             <Text> {ultimas.descricao}</Text>
                         </View>

@@ -199,6 +199,11 @@ const styles = StyleSheet.create({
 
     meusrelatos_texto_erro: {
         alignItems: 'center', justifyContent: 'center', fontSize: 18, marginTop: 80
+    },
+
+
+    editarperfil_view_check: {
+        justifyContent: 'center', alignItems: 'center', flexDirection: 'row'
     }
 
 })

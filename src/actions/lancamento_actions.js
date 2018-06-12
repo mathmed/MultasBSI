@@ -27,7 +27,7 @@ export const modifica_enviar = (text, tipo) => {
 }
 
 
-export const publicar = (img, placa, descricao) => {
+export const publicar = (img, placa, descricao, classe, tipo) => {
 
 	return dispatch => {
         dispatch({ type: 'andamento' });
@@ -83,12 +83,11 @@ export const publicar = (img, placa, descricao) => {
 
             firebase.database().ref('usuarios/' + emailB64).once('value', snapshot => {
                  const info = snapshot.val();
-                 const fotoPerfil = info.foto;
                  const nome = info.nome;
                  const idade = info.idade;
                  const cidade = info.cidade;
                  const sexo = info.sexo;
-                 firebase.database().ref('relatos/').push({ imagem, placa, emailB64, data, fotoPerfil, nome, descricao, dataPublicacao, endereco, status })
+                 firebase.database().ref('relatos/').push({ imagem, placa, emailB64, data, nome, descricao, dataPublicacao, endereco, status, classe, tipo })
                      .then(() => {
                          Alert.alert('Êxito', 'Relato enviado');
                          dispatch({ type: 'publicado' });

@@ -19,7 +19,7 @@ export default class Detalhes extends Component {
         return (
             <View style = {styles.detalhes_view_text}>
                 <Icon2 name = 'thumbs-down' size = {25} color = 'red' />
-                <Text style = {styles.detalhes_texto_comum}> Veiculo não foi multado </Text>
+                <Text style = {styles.detalhes_texto_comum}> Veiculo ainda não foi multado </Text>
             </View>
         )
 
@@ -43,7 +43,7 @@ export default class Detalhes extends Component {
 												
 						<View style = {styles.detalhes_view_text}>
 							<Icon2 name ='car' size = {25} color = 'grey' />
-							<Text style = {styles.detalhes_texto_comum}> Placa {this.props.placa} </Text>
+							<Text style = {styles.detalhes_texto_comum}> {this.props.tipo} {this.props.classe} com placa {this.props.placa} </Text>
 						</View>
 
 						<View style = {styles.detalhes_view_text}>
@@ -56,7 +56,7 @@ export default class Detalhes extends Component {
 							<Text style = {styles.detalhes_texto_comum}> {this.props.nome} flagrou essa suposta infração em {this.props.data}</Text>
 						</View>
 
-							{this.status()}
+						{this.status()}
 
 
 					</View>

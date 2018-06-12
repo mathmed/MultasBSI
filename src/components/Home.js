@@ -10,8 +10,9 @@ import styles from '../styles/styles.js';
 import Drawer from 'react-native-drawer';
 import DrawerTela from './Drawer.js'
 import { connect } from 'react-redux';
-import { listarHome } from '../actions/listarHome_actions.js';
 import UserAvatar from 'react-native-user-avatar';
+import firebase from 'firebase'
+import { listarHome } from '../actions/listarHome_actions.js';
 
 
 class Home extends Component {
@@ -20,37 +21,46 @@ class Home extends Component {
 		super(props);
         this.state = {
             progress: new Animated.Value(0),
-            drawer: false
+            drawer: false,
+            feed: ''
         }
     }
     
-    componentDidMount(){
-
-        this.animation.play();
+    componentWillMount(){
         this.props.listarHome();
     }
+    componentDidMount(){
+        this.animation.play();
+        
+    }
+
+    componentWillReceiveProps(){
+        Actions.refresh();
+    }
+
+
 
     renderRow = (ultimas) => {
 			return(
+                <TouchableHighlight onPress = {() => Actions.detalhes({
+                    data: ultimas.dataPublicacao, descricao: ultimas.descricao, endereco: ultimas.endereco,
+                    imagem: ultimas.imagem, nome: ultimas.nome, placa: ultimas.placa, status: ultimas.status,
+                    tipo: ultimas.tipo, classe: ultimas.classe
+                })} underlayColor = 'transparent'>
+
 				<View style={{ flex: 1, borderBottomWidth: 1, borderColor: '#CCC', padding: 10 }}>
                     <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <UserAvatar size="45" name="MM" src = {ultimas.fotoPerfil} />
+                        <UserAvatar size="45" name="MM" src = {ultimas.imagem} />
                         <View style = {{justifyContent: 'center', alignItems: 'center' }}>
                             <Text> {ultimas.descricao}</Text>
                         </View>
 
                         <View style = {{justifyContent: 'center', alignItems: 'center'}}>
-                        
-                            <TouchableHighlight onPress = {() => Actions.detalhes({
-                                data: ultimas.dataPublicacao, descricao: ultimas.descricao, endereco: ultimas.endereco,
-                                imagem: ultimas.imagem, nome: ultimas.nome, placa: ultimas.placa, status: ultimas.status
-                            })} underlayColor = 'transparent'>
-                            
                                 <Icon name = {"eye"} size = {30} color = "#E82D0C" />
-                            </TouchableHighlight>
                         </View>
                     </View>
 				</View>
+                </TouchableHighlight>
 			);
 
 		}
@@ -86,7 +96,9 @@ class Home extends Component {
 				<FlatList
 					extraData = {this.props.ultimas}
 					data = {this.props.ultimas}
-					renderItem = {({item}) => this.renderRow(item)}
+                    renderItem = {({item}) => this.renderRow(item)}
+                    keyExtractor={(item, index) => index}
+
 
 				/>
             
