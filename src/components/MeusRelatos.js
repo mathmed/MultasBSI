@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, FlatList } from 'react-native';
+import { View, StatusBar, TouchableHighlight, FlatList } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Text } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import _ from 'lodash';
 import styles from '../styles/styles.js';
 import { connect } from 'react-redux';
@@ -15,7 +14,6 @@ class MeusRelatos extends Component {
 	constructor(props){
 		super(props);
         this.state = {
-            progress: new Animated.Value(0),
             drawer: false
         }
     }
@@ -32,7 +30,7 @@ class MeusRelatos extends Component {
                     imagem: ultimas.imagem, nome: ultimas.nome, placa: ultimas.placa, status: ultimas.status
                 })} underlayColor = 'transparent'>
 
-				<View style={{ flex: 1, borderBottomWidth: 1, borderColor: '#CCC', padding: 30, flexDirection: 'row', justifyContent: 'space-between' }}>
+				<View style={{ flex: 1, borderBottomWidth: 1, borderColor: '#CCC', padding: 30, flexDirection: 'row', justifyContent: 'space-around' }}>
                         <UserAvatar size="45" name="MM" src = {ultimas.imagem} />
                         <View style = {{alignItems: 'center' , marginLeft: 40 }}>
                             <Text> {ultimas.descricao}</Text>

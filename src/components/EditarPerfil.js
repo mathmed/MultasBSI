@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableHighlight, ActivityIndicator, Platform, TextInput, CheckBox, StatusBar } from 'react-native';
-import UserAvatar from 'react-native-user-avatar';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { View, Text, TouchableHighlight, ActivityIndicator, TextInput, CheckBox, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import { modificaDadosPerfil, salvarDados } from '../actions/editar_actions';
 import styles from '../styles/styles.js'
-
-
 
 
 class EditarPerfil extends Component {
@@ -19,7 +15,7 @@ class EditarPerfil extends Component {
     }
     
     _renderizarBotao(){
-        if(!this.props.loading_salvar){
+        if(!this.props.loading_enviar){
             return(
 
             <TouchableHighlight underlayColor = "transparent" onPress = {() => this.props.salvarDados(this.props.senha, this.props.nome)}>
@@ -45,7 +41,7 @@ class EditarPerfil extends Component {
                         placeholder = "Nome"
                         underlineColorAndroid = "black"
                         value = {this.props.nome}
-                        onChangeText = {(text) => this.props.modifica_enviar(text, 'descricao')}
+                        onChangeText = {(text) => this.props.modificaDadosPerfil(text, 'nome')}
                     />
                 </View>
             
@@ -55,7 +51,7 @@ class EditarPerfil extends Component {
                         underlineColorAndroid = "black"
                         value = {this.props.senha}
                         secureTextEntry = {this.state.exibir}
-                        onChangeText = {(text) => this.props.modifica_enviar(text, 'descricao')}
+                        onChangeText = {(text) => this.props.modificaDadosPerfil(text, 'senha')}
                     />
                 </View>
 

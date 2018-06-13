@@ -8,6 +8,8 @@ import NovoRelato from './components/NovoRelato.js';
 import Detalhes from './components/Detalhes.js';
 import MeusRelatos from './components/MeusRelatos.js';
 import EditarPerfil from './components/EditarPerfil.js';
+import Sobre from './components/Sobre.js';
+
 export default class Rotas extends Component{
 
 	render(){
@@ -21,6 +23,7 @@ export default class Rotas extends Component{
 					<Scene key = 'detalhes' component = {Detalhes}  title="Detalhes" titleStyle = {{color: 'snow', backgroundColor: '#E82D0C', fontSize: 16}} hideNavBar = {false} navigationBarStyle={{backgroundColor: '#E82D0C', height: 40}} headerTintColor="snow"/>
 					<Scene key = 'meusrelatos' component = {MeusRelatos}  title="Meus relatos" titleStyle = {{color: 'snow', backgroundColor: '#E82D0C', fontSize: 16}} hideNavBar = {false} navigationBarStyle={{backgroundColor: '#E82D0C', height: 40}} headerTintColor="snow"/>
 					<Scene key = 'editarperfil' component = {EditarPerfil}  title="Editar perfil" titleStyle = {{color: 'snow', backgroundColor: '#E82D0C', fontSize: 16}} hideNavBar = {false} navigationBarStyle={{backgroundColor: '#E82D0C', height: 40}} headerTintColor="snow"/>
+					<Scene key = 'sobre' component = {Sobre}  title="Sobre" titleStyle = {{color: 'snow', backgroundColor: '#E82D0C', fontSize: 16}} hideNavBar = {false} navigationBarStyle={{backgroundColor: '#E82D0C', height: 40}} headerTintColor="snow"/>
 				</Scene>
 			</Router>
 

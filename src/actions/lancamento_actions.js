@@ -53,7 +53,6 @@ export const publicar = (img, placa, descricao, classe, tipo) => {
                 const latitude = place.coords.latitude;
                 const longitude = place.coords.longitude;
                 const url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&region=BR&key=AIzaSyDCWELaZx6voUO-i7tAhz--Rh4Uv43h0nc";
-                console.log(url);
         
                 fetch(
                     url

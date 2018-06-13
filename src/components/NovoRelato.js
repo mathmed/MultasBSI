@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { Picker, View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, TextInput, Image, Platform, Alert, ActivityIndicator} from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { Picker, View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, Image, Alert, ActivityIndicator} from 'react-native';
 import { Text } from 'react-native-elements';
 import { Hideo } from 'react-native-textinput-effects';
 import { TextInputMask } from 'react-native-masked-text'
@@ -166,7 +165,7 @@ class NovoRelato extends Component {
                         mode = {'dropdown'}
                         >
 
-                        <Picker.Item label="Deixar o condutor ou passageiro de usar o cinto de segurança" value="Deixar o condutor ou passageiro de usar o cinto de segurança" />
+                        <Picker.Item label="Deixar de usar o cinto de segurança" value="Deixar o condutor ou passageiro de usar o cinto de segurança" />
                         <Picker.Item label="Transportar crianças de forma irregular" value="Transportar crianças de forma irregular" />
                         <Picker.Item label="Estacionar o veículo nas esquinas" value="Estacionar o veículo nas esquinas" />
                         <Picker.Item label="Estacionar veículo afastado da guia da calçada" value="Estacionar veículo afastado da guia da calçada" />

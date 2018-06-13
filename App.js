@@ -6,9 +6,22 @@ import {createStore, applyMiddleware} from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducers from './src/reducers';
 import firebase from 'firebase';
+import {BackAndroid} from 'react-native'
 
 
 export default class App extends Component{
+
+  componentDidMount() {
+    BackAndroid.addEventListener('hardwareBackPress', this.handleBackButton);
+  }
+  
+  componentWillUnmount() {
+    BackAndroid.removeEventListener('hardwareBackPress', this.handleBackButton);
+  }
+  
+  handleBackButton() {
+    return true;
+  }
 
   componentWillMount() {
 

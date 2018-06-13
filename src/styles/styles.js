@@ -198,13 +198,71 @@ const styles = StyleSheet.create({
     },
 
     meusrelatos_texto_erro: {
-        alignItems: 'center', justifyContent: 'center', fontSize: 18, marginTop: 80
+        alignItems: 'center', justifyContent: 'center', fontSize: 18, marginTop: 80, alignSelf: 'center'
     },
 
 
     editarperfil_view_check: {
-        justifyContent: 'center', alignItems: 'center', flexDirection: 'row'
+        justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginBottom: 30
+    },
+
+    car_animation: {
+        width: 150,
+        height: 150,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    sobre_header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        flex: 1
+    },
+    sobre_text_header: {
+        fontWeight: 'bold',
+        fontSize: 20
+    },
+    
+    sobre_content: {
+        paddingHorizontal: 15,
+        flex: 2
+    },
+
+    sobre_text: {
+        fontSize: 16
+    },
+
+    sobre_blue: {
+        color: 'blue',
+        fontWeight: 'bold'
+    },
+
+    sobre_contato: {
+        marginTop: 10,
+        marginLeft: 10,
+        fontSize: 16,
+        flexDirection: 'row'
+
+    },
+    container_sobre: {
+        flex: 1,
+        backgroundColor: 'snow'
+    },
+
+    sobre_footer: {
+        flex: 1,
+        justifyContent: 'flex-end'
+        
+    },
+
+    sobre_footer_text: {
+        justifyContent: 'center'
+    },
+
+    sobre_text_footer: {
+        alignSelf: 'center'
     }
+
 
 })
 

@@ -5,7 +5,6 @@ import usuario_reducers from './usuario_reducers.js';
 import lancamento_reducers from './lancamento_reducers.js';
 import home_reducers from './home_reducers.js';
 import my_reducers from './my_reducers.js';
-import editar_reducers from './my_reducers.js';
 
 
 export default combineReducers({
@@ -13,6 +12,5 @@ export default combineReducers({
     usuario_reducers,
     lancamento_reducers,
     home_reducers,
-    my_reducers,
-    editar_reducers
+    my_reducers
 });

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, ActivityIndicator } from 'react-native';
+import { View, StatusBar, ScrollView, TouchableHighlight, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Text } from 'react-native-elements';
 import { Hideo } from 'react-native-textinput-effects';

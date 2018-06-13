@@ -31,9 +31,8 @@ export const listarHome = () => {
 	return (dispatch) => {
 		if (currentUser) {
 			firebase.database().ref('/relatos/').orderByChild('data')
-				.on('value', snapshot => {
-					
-					alert("entrei no on")
+				.once('value', snapshot => {
+				
 					Actions.refresh();
 					snapshot.forEach((snap) => {
 	

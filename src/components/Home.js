@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import { View, StatusBar, Animated, Easing, ScrollView, TouchableHighlight, FlatList } from 'react-native';
+import { View, StatusBar, Animated, Easing, TouchableHighlight, FlatList } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Text } from 'react-native-elements';
-import { Hideo } from 'react-native-textinput-effects';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import _ from 'lodash';
 import LottieView from 'lottie-react-native';
@@ -11,7 +10,6 @@ import Drawer from 'react-native-drawer';
 import DrawerTela from './Drawer.js'
 import { connect } from 'react-redux';
 import UserAvatar from 'react-native-user-avatar';
-import firebase from 'firebase'
 import { listarHome } from '../actions/listarHome_actions.js';
 
 
@@ -21,8 +19,7 @@ class Home extends Component {
 		super(props);
         this.state = {
             progress: new Animated.Value(0),
-            drawer: false,
-            feed: ''
+            drawer: false
         }
     }
     
@@ -30,15 +27,10 @@ class Home extends Component {
         this.props.listarHome();
     }
     componentDidMount(){
+        this.props.listarHome();
         this.animation.play();
         
     }
-
-    componentWillReceiveProps(){
-        Actions.refresh();
-    }
-
-
 
     renderRow = (ultimas) => {
 			return(
@@ -80,7 +72,7 @@ class Home extends Component {
                     <Icon name = {"bars"} size = {30} color = "#2200B2" />
                 </TouchableHighlight>
                 
-                <Text h4> Últimos relatos </Text>
+                <Text h5> Relatos próximos à você </Text>
 
             </View>
 
